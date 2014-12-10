@@ -22,17 +22,25 @@ public class Lab10 {
 	 
 	 public static void clearMaze(Athlete arg) {
     
-		 if(arg.rightIsClear()) {
-            arg.turnRight();
+    while (!arg.nextToABeeper()) {
+       if(arg.frontIsClear() && !arg.leftIsClear()) {
             arg.move();
-       } else if(arg.frontIsClear()) {
-            arg.move();
-       } else if(arg.leftIsClear()) {
+            }
+            
+       if(arg.leftIsClear()) {
             arg.turnLeft();
             arg.move();
-       } else {
+            }
+    
+		 if(!arg.frontIsClear() && !arg.leftIsClear() && arg.rightIsClear()) {
+            arg.turnRight();
+            arg.move();
+            }
+
+       if(!arg.frontIsClear() && !arg.leftIsClear() && !arg.rightIsClear()) {
             arg.turnAround();
             arg.move();
+            }
        }
 	 }
  }
